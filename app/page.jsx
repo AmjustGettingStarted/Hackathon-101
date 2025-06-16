@@ -85,12 +85,11 @@ export default async function Home() {
             <CarouselContent className="space-x-4">
               {carMakes.map((make) => {
                 return (
-                  <CarouselItem className="max-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition">
-                    <Link
-                      href={`/cars?make=${make.name}`}
-                      key={make.name}
-                      className=""
-                    >
+                  <CarouselItem
+                    key={make.name}
+                    className="max-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition"
+                  >
+                    <Link href={`/cars?make=${make.name}`} className="">
                       <div className="min-h-16 min-w-[150px] mx-auto mb-2 relative">
                         <Image
                           src={make.image}
