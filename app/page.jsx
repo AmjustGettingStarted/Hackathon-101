@@ -48,12 +48,12 @@ export default async function Home() {
 
       {/* Featured */}
       <section className="py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 cursor-pointer">
           <div className="mb-8 flex items-center justify-between">
-            <h2 className="text-2xl font-bold">Featured Cars</h2>
-            <Button className="flex items-center" variant="ghost" asChild>
+            <h2 className="text-2xl font-bold ">Featured Cars</h2>
+            <Button className="flex items-center " variant="ghost" asChild>
               <Link href="/cars">
-                View All <ChevronRight className="ml-1 h-4 w-4" />
+                View All <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
               </Link>
             </Button>
           </div>
@@ -73,8 +73,8 @@ export default async function Home() {
               </Link>
             </Button>
           </div>
-
-          {/* Carousel Area */}
+ 
+          {/* Carousel Area */}   ``
           <Carousel
             opts={{
               align: "start",
@@ -105,7 +105,7 @@ export default async function Home() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious />
+            <CarouselPrevious className="cursor-pointer"/>
             <CarouselNext />
           </Carousel>
 
@@ -187,7 +187,7 @@ export default async function Home() {
             <h2 className="text-2xl font-bold">Browse by Body Type</h2>
             <Button className="flex items-center" variant="ghost" asChild>
               <Link href="/cars" className=" ">
-                View All <ChevronRight className="ml-1 h-4 w-4" />
+                View All <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
               </Link>
             </Button>
           </div>
@@ -204,7 +204,7 @@ export default async function Home() {
                       src={type.image}
                       fill
                       alt={type.image}
-                      className="object-cover group-hover:scale-105 transition duration-300  "
+                      className="object-cover group-hover:scale-105 transition duration-300 cursor-pointer "
                     />
                   </div>
                   <div className="absolute inset-0 bg-black/20  rounded-lg flex items-end">
@@ -225,11 +225,11 @@ export default async function Home() {
           <h2 className="text-2xl font-bold text-center mb-8">
             Frequently Asked Questions
           </h2>
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full cursor-pointer">
             {faqItems.map((item, i) => {
               return (
                 <AccordionItem value={`item-${i}`} key={i}>
-                  <AccordionTrigger className="hover:no-underline">
+                  <AccordionTrigger className="hover:no-underline ">
                     {item.question}
                   </AccordionTrigger>
                   <AccordionContent>{item.answer} </AccordionContent>
