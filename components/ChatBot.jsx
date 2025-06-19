@@ -64,7 +64,7 @@ export default function ChatBot() {
       });
     } else if (mode === 'support') {
       simulateTyping(() => {
-        addMessage("I'm here to help with any concerns. You can also reach our support team at (555) 123-4567 or support@carmarketplace.com", 'bot', 'support');
+        addMessage("I'm here to help with any concerns. You can also reach our support team at (555) 123-4567 or support@KarMart.com", 'bot', 'support');
       });
     } else if (mode === 'ai') {
       simulateTyping(() => {
@@ -117,7 +117,7 @@ export default function ChatBot() {
     setIsOpen(!isOpen);
     if (!isOpen && messages.length === 0) {
       simulateTyping(() => {
-        addMessage("Welcome to CarMarketplace! How can I help you today?", 'bot');
+        addMessage("Welcome to KarMart! How can I help you today?", 'bot');
       }, 500);
     }
   };
