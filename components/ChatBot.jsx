@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, HelpCircle, Phone, Minimize2, User } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, HelpCircle, Phone, Minimize2, User, MessagesSquareIcon, Plus } from 'lucide-react';
 
 const FAQ_RESPONSES = {
   'financing': 'We offer various financing options including bank loans, in-house financing, and lease-to-own programs. Our finance team can help you find the best rates based on your credit score and budget.',
@@ -130,27 +130,29 @@ export default function ChatBot() {
     <div className="fixed bottom-6 right-6 z-50">
       {/* Chat Window */}
       {isOpen && (
-        <div className={`mb-4 bg-white rounded-4xl shadow-2xl border border-gray-200 transition-all duration-300 ${
-          isMinimized ? 'w-80 h-16' : 'w-80 h-96'
-        }`}>
+        <div
+          className={`mb-4 bg-white rounded-md shadow-2xl transition-all duration-300 ${
+            isMinimized ? "w-80 h-14 " : "w-96 h-[500px]"
+          }`}
+        >
           {/* Header */}
-          <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-3xl text-white">
+          <div className="flex items-center justify-between rounded-t-md p-4 bg-[#27251F] text-white">
             <div className="flex items-center space-x-2">
-              <Bot className="w-4 h-5" />
-              <span className="font-semibold">CarMarketplace Assistant</span>
+              <Bot size={20} />
+              <span className="font-semibold">Karmart Support</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
                 onClick={toggleMinimize}
-                className="p-1 hover:bg-blue-500 rounded transition-colors"
+                className="p-1 hover:bg-white hover:text-black rounded transition-colors cursor-pointer"
               >
-                <Minimize2 className="w-4 h-4" />
+                <Minimize2 size={20} />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-blue-500 rounded transition-colors"
+                className="p-1 hover:bg-white hover:text-black rounded transition-colors cursor-pointer"
               >
-                <X className="w-4 h-4" />
+                <X size={20} />
               </button>
             </div>
           </div>
@@ -158,17 +160,21 @@ export default function ChatBot() {
           {!isMinimized && (
             <>
               {/* Messages */}
-              <div className="h-60 overflow-y-auto p-4 space-y-3">
+              <div className="h-90 overflow-y-auto p-4 space-y-3">
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    className={`flex  items-start ${
+                      message.sender === "user"
+                        ? "justify-end"
+                        : "justify-start"
+                    }`}
                   >
                     <div
                       className={`max-w-xs px-3 py-2 rounded-2xl ${
-                        message.sender === 'user'
-                          ? 'bg-blue-600 text-white rounded-br-sm'
-                          : 'bg-gray-100 text-gray-800 rounded-bl-sm'
+                        message.sender === "user"
+                          ? "bg-[#27251F] text-white rounded-br-sm"
+                          : "bg-red-100 text-gray-800 rounded-bl-sm"
                       }`}
                     >
                       <p className="text-sm">{message.text}</p>
@@ -177,40 +183,46 @@ export default function ChatBot() {
                 ))}
 
                 {/* Welcome Mode Buttons */}
-                {chatMode === 'welcome' && messages.length > 0 && (
-                  <div className="space-y-2">
+                {chatMode === "welcome" && messages.length > 0 && (
+                  <div className="space-y-3">
                     <button
-                      onClick={() => handleWelcomeChoice('faq')}
-                      className="w-full flex items-center space-x-2 p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors"
+                      onClick={() => handleWelcomeChoice("faq")}
+                      className="w-full cursor-pointer flex items-center space-x-2 p-3 bg-blue-100 hover:bg-blue-200 rounded-sm transition-colors"
                     >
-                      <HelpCircle className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm font-medium text-blue-800">FAQ & Common Questions</span>
+                      <HelpCircle className="w-5 h-5 text-blue-600" />
+                      <span className="text-sm font-medium text-blue-800">
+                        FAQ & Common Questions
+                      </span>
                     </button>
                     <button
-                      onClick={() => handleWelcomeChoice('support')}
-                      className="w-full flex items-center space-x-2 p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors"
+                      onClick={() => handleWelcomeChoice("support")}
+                      className="w-full flex cursor-pointer items-center space-x-2 p-3 bg-green-100 hover:bg-green-200 rounded-sm transition-colors"
                     >
-                      <Phone className="w-4 h-4 text-green-600" />
-                      <span className="text-sm font-medium text-green-800">Customer Support</span>
+                      <Phone className="w-5 h-5 text-green-600" />
+                      <span className="text-sm font-medium text-green-800">
+                        Customer Support
+                      </span>
                     </button>
                     <button
-                      onClick={() => handleWelcomeChoice('ai')}
-                      className="w-full flex items-center space-x-2 p-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors"
+                      onClick={() => handleWelcomeChoice("ai")}
+                      className="w-full  cursor-pointer flex items-center space-x-2 p-3 bg-purple-100 hover:bg-purple-200 rounded-sm transition-colors"
                     >
                       <Bot className="w-4 h-4 text-purple-600" />
-                      <span className="text-sm font-medium text-purple-800">AI Assistant</span>
+                      <span className="text-sm font-medium text-purple-800">
+                        AI Assistant
+                      </span>
                     </button>
                   </div>
                 )}
 
                 {/* FAQ Quick Buttons */}
-                {chatMode === 'faq' && (
+                {chatMode === "faq" && (
                   <div className="grid grid-cols-2 gap-2 mt-3">
                     {FAQ_QUESTIONS.map((faq) => (
                       <button
                         key={faq.key}
                         onClick={() => handleFAQClick(faq.key)}
-                        className="p-2 text-xs bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-lg transition-colors"
+                        className="p-2 cursor-pointer text-xs bg-blue-50 hover:bg-blue-100 text-blue-800 rounded-sm transition-colors"
                       >
                         {faq.label}
                       </button>
@@ -221,11 +233,17 @@ export default function ChatBot() {
                 {/* Typing Indicator */}
                 {isTyping && (
                   <div className="flex justify-start">
-                    <div className="bg-gray-100 rounded-2xl rounded-bl-sm px-3 py-2">
+                    <div className="bg-[#27251F] rounded-2xl rounded-bl-sm px-3 py-2">
                       <div className="flex space-x-1">
                         <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.1s" }}
+                        ></div>
+                        <div
+                          className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"
+                          style={{ animationDelay: "0.2s" }}
+                        ></div>
                       </div>
                     </div>
                   </div>
@@ -235,28 +253,32 @@ export default function ChatBot() {
               </div>
 
               {/* Input */}
-              <div className="p-4 border-t border-gray-200">
+              <div className="px-2 pt-4 border-t border-slate-200 bg-slate-200">
                 <div className="flex space-x-2">
                   <input
                     type="text"
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                    onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                     placeholder="Type your message..."
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm"
+                    className="flex-1 px-3 py-2 border bg-white border-gray-300 rounded-sm focus:ring-2 focus:ring-slate-500/50 focus:outline-none text-sm"
                   />
                   <button
                     onClick={handleSendMessage}
-                    className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-colors"
+                    className="p-2 bg-black hover:bg-white text-white hover:text-black rounded-full transition-colors duration-500 ease-in-out"
                   >
-                    <Send className="w-4 h-4" />
+                    <Send size={20} />
                   </button>
                 </div>
                 {messages.length > 0 && (
                   <button
                     onClick={resetChat}
-                    className="text-xs text-gray-500 hover:text-gray-700 mt-2"
+                    className=" flex gap-2 items-center cursor-pointer text-black hover:text-slate-700 ml-2 py-2 text-sm"
                   >
+                    <Plus
+                      size={15}
+                      className="bg-black text-white rounded-full"
+                    />
                     Start new conversation
                   </button>
                 )}
@@ -269,14 +291,14 @@ export default function ChatBot() {
       {/* Floating Action Button */}
       <button
         onClick={toggleOpen}
-        className={`w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${
-          isOpen ? 'rotate-0' : 'hover:scale-110'
+        className={`w-12 h-12 bg-[#0C0404] border-1 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center ${
+          isOpen ? "rotate-0" : "hover:scale-110"
         }`}
       >
         {isOpen ? (
-          <X className="w-6 h-6" />
+          <X size={25} className="cursor-pointer" />
         ) : (
-          <MessageCircle className="w-6 h-6" />
+          <MessagesSquareIcon size={25} className="cursor-pointer" />
         )}
       </button>
     </div>
