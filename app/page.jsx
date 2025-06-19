@@ -53,7 +53,8 @@ export default async function Home() {
             <h2 className="text-2xl font-bold ">Featured Cars</h2>
             <Button className="flex items-center " variant="ghost" asChild>
               <Link href="/cars">
-                View All <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
+                View All{" "}
+                <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
               </Link>
             </Button>
           </div>
@@ -73,8 +74,7 @@ export default async function Home() {
               </Link>
             </Button>
           </div>
- 
-          {/* Carousel Area */}   ``
+          {/* Carousel Area */} ``
           <Carousel
             opts={{
               align: "start",
@@ -85,12 +85,11 @@ export default async function Home() {
             <CarouselContent className="space-x-4">
               {carMakes.map((make) => {
                 return (
-                  <CarouselItem className="max-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition">
-                    <Link
-                      href={`/cars?make=${make.name}`}
-                      key={make.name}
-                      className=""
-                    >
+                  <CarouselItem
+                    key={make.name}
+                    className="max-w-[200px] bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition"
+                  >
+                    <Link href={`/cars?make=${make.name}`} className="">
                       <div className="min-h-16 min-w-[150px] mx-auto mb-2 relative">
                         <Image
                           src={make.image}
@@ -105,10 +104,9 @@ export default async function Home() {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="cursor-pointer"/>
+            <CarouselPrevious className="cursor-pointer" />
             <CarouselNext />
           </Carousel>
-
           {/* Scroll Area */}
           <ScrollArea className="lg:hidden w-full whitespace-nowrap rounded-md ">
             {/* <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4"> */}
@@ -187,7 +185,8 @@ export default async function Home() {
             <h2 className="text-2xl font-bold">Browse by Body Type</h2>
             <Button className="flex items-center" variant="ghost" asChild>
               <Link href="/cars" className=" ">
-                View All <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
+                View All{" "}
+                <ChevronRight className="ml-1 h-4 w-4 cursor-pointer" />
               </Link>
             </Button>
           </div>
@@ -225,7 +224,11 @@ export default async function Home() {
           <h2 className="text-2xl font-bold text-center mb-8">
             Frequently Asked Questions
           </h2>
-          <Accordion type="single" collapsible className="w-full cursor-pointer">
+          <Accordion
+            type="single"
+            collapsible
+            className="w-full cursor-pointer"
+          >
             {faqItems.map((item, i) => {
               return (
                 <AccordionItem value={`item-${i}`} key={i}>
