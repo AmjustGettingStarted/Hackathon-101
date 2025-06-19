@@ -117,7 +117,7 @@ export default function ChatBot() {
     setIsOpen(!isOpen);
     if (!isOpen && messages.length === 0) {
       simulateTyping(() => {
-        addMessage("Welcome to CarMarketplace! How can I help you today?", 'bot');
+        addMessage("Welcome to KarMart! How can I help you today?", 'bot');
       }, 500);
     }
   };
@@ -137,7 +137,7 @@ export default function ChatBot() {
           <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-blue-700 rounded-t-2xl text-white">
             <div className="flex items-center space-x-2">
               <Bot className="w-5 h-5" />
-              <span className="font-semibold">CarMarketplace Assistant</span>
+              <span className="font-semibold">Kar Assistant</span>
             </div>
             <div className="flex items-center space-x-2">
               <button
